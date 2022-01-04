@@ -1,0 +1,43 @@
+<form (ngSubmit)="insertData()" >
+  <div class="form-group row">
+    <label class="col-4"for="name" >Name:</label>
+    <input class="col-6" type="text" name="name" [(ngModel)] = "product.name">
+    </div>
+    <div class="form-group row">
+
+    <label class="col-4"for="description">Description:</label>
+    <input class="col-6" type="text" name="description" [(ngModel)] = "product.description">
+    </div>
+    <div class="form-group row">
+
+    <label class="col-4"for="price">Price</label>
+    <input class="col-6" type="text" name="price" [(ngModel)] = "product.price">
+    </div>
+    <div class="form-group row">
+    <label class="col-4"for="stock">Stock</label>
+    <input class="col-6" type="text" name="stock" [(ngModel)] = "product.stock">
+    </div>
+    <div class="form-group row justify-content-end">
+      <button class="btn button btn-primary">Submit</button>
+    </div>
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" class="mx-3">#</th>
+      <th scope="col" class="mx-3">Name</th>
+      <th scope="col" class="col-6">Description</th>
+      <th scope="col" class="mx-3">Price</th>
+      <th scope="col" class="mx-3">Stock (pcs)</th>
+      <th scope="col" class="mx-3">Action</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let prod of products">
+    <td>{{prod.id}}</td>
+    <td>{{prod.name}}</td>
+    <td>{{prod.description}}</td>
+    <td>{{prod.price}} lei</td>
+    <td>{{prod.stock}}</td>
+    <td><button class="button btn-secondary btn-sm col"  routerLink="edit/{{prod.id}}">edit</button><button class="button btn-danger btn-sm col" (click) = "deleteProduct(prod.id)">Delete</button></td>
+  </tr>
+</table>
